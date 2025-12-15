@@ -1,7 +1,5 @@
-# mystyle/themes/dark.py
-import matplotlib.pyplot as plt
-from cycler import cycler
-from ..palettes import DEFAULT_COLORS
+# Import from private header
+from .._internal import plt, cycler, DEFAULT_COLORS
 
 
 def apply():

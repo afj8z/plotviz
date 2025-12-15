@@ -1,16 +1,8 @@
-import matplotlib.pyplot as plt
-from cycler import cycler
-from ..palettes import DEFAULT_COLORS  # Relative import
+from .._internal import plt, cycler, DEFAULT_COLORS, CoordPair
 
 
-def set_style(fig_xy: tuple[int, int] = (10, 6)):
-    """Overwrites matplotlib defaults with user preferences
-
-    Parameters
-    ----------
-    fig_xy: tuple, optional
-        Set the size of the figure (default is (10, 6))
-    """
+def set_style(fig_xy: CoordPair = (10, 6)):
+    """Overwrites matplotlib defaults with user preferences"""
     c = DEFAULT_COLORS
     plt.rcParams["font.family"] = "serif"
     plt.rcParams["font.serif"] = ["IBM Plex Serif"] + plt.rcParams["font.serif"]

@@ -1,25 +1,16 @@
-import matplotlib.pyplot as plt
-from .utils import save_figure as save
-from .themes import standard, dark, academic
+"""
+plotviz
+---
 
-THEMES = {"standard": standard, "dark": dark, "academic": academic}
+Provides shorthands for consistent and faster matplotlib plotting.
+"""
 
+from .core import use, Plot, show, snapshot
 
-def use(theme_name="standard"):
-    """Apply a specific style template.
+from .utils import save_figure
 
-    Parameters
-    ----------
-    theme_name: str, optional
-        Set the theme. One of 'standard', 'dark', 'academic'
-        (default is 'standard')
-    """
-    if theme_name not in THEMES:
-        raise ValueError(
-            f"Theme '{theme_name}' not found. Available: {list(THEMES.keys())}"
-        )
+from .themes import THEMES
 
-    plt.rcdefaults()
+plot = Plot
 
-    THEMES[theme_name].apply()
-    print(f"Using style: {theme_name}")
+__all__ = ["use", "plot", "show", "snapshot", "save_figure", "THEMES"]
