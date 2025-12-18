@@ -5,7 +5,7 @@ description = ""
 readme = "README.md"
 requires-python = ">=3.13"
 authors = [{ name = "afj8z", email = "aidflem@gmail.com" }]
-dependencies = ["matplotlib (>=3.10.7,<4.0.0)", "numpy (>=2.3.5,<3.0.0)"]
+dependencies = ["matplotlib (>=3.10.7,<4.0.0)", "numpy (>=2.3.5,<3.0.0)", "scipy (>=1.16.3,<2.0.0)"]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

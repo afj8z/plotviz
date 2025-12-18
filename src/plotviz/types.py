@@ -27,3 +27,13 @@ class PlotContext:
     theme: str | None = None
     figsize: CoordPair = (10, 6)
     style_naked: bool = False
+
+
+@dataclass
+class DataContext:
+    """Struct to hold data that populates the plot."""
+
+    xstart: Number | None = None
+    xend: Number | None = None
+    xsamp: Number | None = None
+    lines: list[tuple[Number]] | None = None

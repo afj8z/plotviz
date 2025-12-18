@@ -18,3 +18,10 @@ class PlotContext:
     figsize: CoordPair = (10, 6)
     style_naked: bool = False
     theme: str | None = None
+
+@dataclass
+class DataContext:
+    xstart: Number | None = None
+    xend: Number | None = None
+    xsamp: Number | None = None
+    lines: list[tuple[Number]] | None = None

@@ -2,9 +2,10 @@
 Core Logic: Defines global configuration verbs and the Plot handle.
 """
 
-from ._internal import plt, PlotContext, GridContext
+from ._internal import plt, linspace, PlotContext, GridContext, DataContext, Number
 from .utils import apply_layout, save_figure
 from .themes import THEMES
+from .data_proc import _pltarray_singlex
 
 _active_theme = "standard"
 
@@ -38,6 +39,7 @@ class Plot:
     def __init__(self):
         self.ctx = PlotContext()
         self.grd = GridContext()
+        self.dta = DataContext()
         self.ctx.theme = _active_theme
 
     def style(
@@ -88,12 +90,42 @@ class Plot:
 
         return self
 
+    def data(
+        self,
+        x: tuple[Number, Number, Number] | None = None,
+        f: list[tuple[Number]] | None = None,
+    ):
+        if x is not None:
+            self.dta.xstart = x[0]
+            self.dta.xend = x[1]
+            self.dta.xsamp = x[2]
+
+        if f is not None:
+            self.dta.lines = f
+        return self
+
 
 def show(plot_handle: Plot):
     """Applies settings and shows the plot."""
     # consistent theme settings
     if plot_handle.ctx.theme:
         _apply_theme(plot_handle.ctx.theme)
+    if all(
+        v is not None
+        for v in [
+            plot_handle.dta.xstart,
+            plot_handle.dta.xend,
+            plot_handle.dta.xsamp,
+            plot_handle.dta.lines,
+        ]
+    ):
+        x = linspace(
+            plot_handle.dta.xstart,
+            plot_handle.dta.xend,
+            plot_handle.dta.xsamp,
+        )
+        funxs = plot_handle.dta.lines
+        _pltarray_singlex(x, funxs)
 
     apply_layout(plot_handle.ctx, plot_handle.grd)
     plt.show()

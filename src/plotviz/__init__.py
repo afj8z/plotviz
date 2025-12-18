@@ -11,6 +11,8 @@ from .utils import save_figure
 
 from .themes import THEMES
 
+from .figs.probability import densfunc
+
 plot = Plot
 
-__all__ = ["use", "plot", "show", "snapshot", "save_figure", "THEMES"]
+__all__ = ["use", "plot", "show", "snapshot", "save_figure", "THEMES", "densfunc"]
